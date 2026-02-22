@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroWatchFace — Premium Unlock</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- PayPal SDK (파트 1) -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAA98LazX0a7doLlfdgLbMQNFnzGmzidaRuJ51RbapSaBaHF_8az4xQnbZ20TSjy0bLJQzz_fRgs-G7g&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+    <style>
+        :root {
+            --bg: #0a0e17;
+            --surface: #111827;
+            --border: #1e293b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #f59e0b;
+            --accent-dim: rgba(245, 158, 11, 0.15);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 80% 50%, rgba(255,255,255,0.35), transparent),
+                radial-gradient(1.5px 1.5px at 10% 80%, rgba(245,158,11,0.4), transparent),
+                radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.25), transparent),
+                radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1.5px 1.5px at 50% 50%, rgba(245,158,11,0.3), transparent);
+            background-size: 200px 200px;
+            animation: drift 60s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes drift {
+            from { transform: translateY(0); }
+            to { transform: translateY(-200px); }
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 560px;
+            width: 100%;
+            padding: 2rem 1.5rem;
+        }
+        .header { text-align: center; margin-bottom: 2.5rem; }
+        .moon-icon {
+            width: 64px; height: 64px;
+            margin: 0 auto 1.2rem;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 40%, #f5f0e0, #c4a44a 60%, #8a6d2b);
+            box-shadow: 0 0 40px rgba(245,158,11,0.25), 0 0 80px rgba(245,158,11,0.1);
+            animation: glow 4s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 40px rgba(245,158,11,0.2), 0 0 80px rgba(245,158,11,0.08); }
+            to { box-shadow: 0 0 50px rgba(245,158,11,0.35), 0 0 100px rgba(245,158,11,0.15); }
+        }
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem; font-weight: 400;
+            letter-spacing: -0.01em; margin-bottom: 0.4rem;
+        }
+        .tagline { color: var(--text-muted); font-size: 0.95rem; }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-title {
+            font-size: 0.75rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--accent); margin-bottom: 1.2rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .feature-item { display: flex; align-items: flex-start; gap: 0.6rem; }
+        .feature-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--accent); margin-top: 7px; flex-shrink: 0;
+        }
+        .feature-text { font-size: 0.88rem; line-height: 1.4; color: var(--text-muted); }
+        .feature-text strong { color: var(--text); font-weight: 500; display: block; }
+        .price-card { text-align: center; }
+        .price {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem; color: var(--accent);
+            line-height: 1; margin-bottom: 0.3rem;
+        }
+        .price-note { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .paypal-area {
+            background: var(--accent-dim);
+            border: 1px dashed var(--accent);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .paypal-area p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+        .step {
+            display: flex; gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .step:last-child { margin-bottom: 0; }
+        .step-num {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: var(--accent-dim); color: var(--accent);
+            font-weight: 600; font-size: 0.82rem;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .step-text {
+            font-size: 0.88rem; line-height: 1.5;
+            color: var(--text-muted); padding-top: 3px;
+        }
+        .step-text strong { color: var(--text); font-weight: 500; }
+        .footer {
+            text-align: center; padding: 1rem 0 2rem;
+            color: var(--text-muted); font-size: 0.78rem; line-height: 1.6;
+        }
+        .footer a { color: var(--accent); text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 480px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.7rem; }
+            .price { font-size: 2.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <div class="moon-icon"></div>
+        <h1>AstroWatchFace</h1>
+        <p class="tagline">Astronomical watch face for Garmin</p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Premium Features</div>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-dot"></div>
+                <div class="feature-text"><strong>Moon Phase</strong>Real-time lunar display</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-dot"></div>
+                <div class="feature-text"><strong>Sunrise / Sunset</strong>GPS-based calculation</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-dot"></div>
+                <div class="feature-text"><strong>Air Quality</strong>Real-time AQI monitoring</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-dot"></div>
+                <div class="feature-text"><strong>Full Customization</strong>Colors, layout &amp; data fields</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card price-card">
+        <div class="price">$2.99</div>
+        <p class="price-note">One-time purchase · Lifetime access</p>
+        <div class="paypal-area">
+            <p>Secure payment via PayPal</p>
+
+            <!-- PayPal Hosted Button (파트 2) -->
+            <div id="paypal-container-NN59A3ZHMHSWQ"></div>
+            <script>
+                paypal.HostedButtons({
+                    hostedButtonId: "NN59A3ZHMHSWQ",
+                }).render("#paypal-container-NN59A3ZHMHSWQ")
+            </script>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">How to Activate</div>
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>Complete payment</strong> — Click "Buy Now" and finish PayPal checkout.</div>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>Receive license key</strong> — Your unique key will arrive via email within 24 hours.</div>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Enter key in Garmin Connect</strong> — Open Garmin Connect Mobile → AstroWatchFace Settings → paste your key.</div>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-text"><strong>Sync &amp; enjoy</strong> — All premium features are now unlocked!</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Developed by Taehoon Lee<br>
+        Questions? <a href="mailto:taehun.yi@gmail.com">taehun.yi@gmail.com</a><br>
+        <a href="https://apps.garmin.com/en-US/apps/">Download AstroWatchFace on Connect IQ Store</a>
+    </div>
+
+</div>
+</body>
+</html>
