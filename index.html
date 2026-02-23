@@ -11,7 +11,6 @@
             --card: #111827;
             --card-border: #1e293b;
             --accent: #f59e0b;
-            --accent-hover: #fbbf24;
             --text: #e2e8f0;
             --text-dim: #94a3b8;
             --text-bright: #ffffff;
@@ -30,7 +29,7 @@
             content: '';
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: 
+            background:
                 radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.8), transparent),
                 radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.6), transparent),
                 radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.7), transparent),
@@ -39,229 +38,65 @@
                 radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.4), transparent),
                 radial-gradient(1.5px 1.5px at 70% 85%, rgba(245,158,11,0.7), transparent),
                 radial-gradient(1px 1px at 85% 35%, rgba(255,255,255,0.6), transparent);
-            pointer-events: none;
-            z-index: 0;
+            pointer-events: none; z-index: 0;
         }
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 40px 20px 60px;
-            position: relative;
-            z-index: 1;
-        }
-        .lang-toggle {
-            display: flex;
-            justify-content: flex-end;
-            gap: 4px;
-            margin-bottom: 28px;
-        }
+        .container { max-width: 640px; margin: 0 auto; padding: 40px 20px 60px; position: relative; z-index: 1; }
+        .lang-toggle { display: flex; justify-content: flex-end; gap: 4px; margin-bottom: 28px; }
         .lang-btn {
-            background: transparent;
-            border: 1px solid var(--card-border);
-            color: var(--text-dim);
-            padding: 6px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 13px;
-            transition: all 0.2s;
+            background: transparent; border: 1px solid var(--card-border); color: var(--text-dim);
+            padding: 6px 14px; border-radius: 6px; cursor: pointer;
+            font-family: 'DM Sans', sans-serif; font-size: 13px; transition: all 0.2s;
         }
-        .lang-btn.active {
-            background: var(--accent);
-            color: var(--bg);
-            border-color: var(--accent);
-            font-weight: 600;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-        .moon-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
-            display: block;
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-        .header h1 {
-            font-family: 'Space Mono', monospace;
-            font-size: 26px;
-            color: var(--text-bright);
-            margin-bottom: 6px;
-        }
-        .version {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-left: 4px;
-            vertical-align: middle;
-        }
+        .lang-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+        .header { text-align: center; margin-bottom: 32px; }
+        .moon-icon { font-size: 48px; margin-bottom: 10px; display: block; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        .header h1 { font-family: 'Space Mono', monospace; font-size: 26px; color: var(--text-bright); margin-bottom: 6px; }
+        .version { display: inline-block; background: var(--accent); color: var(--bg); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 4px; vertical-align: middle; }
         .subtitle { color: var(--text-dim); font-size: 15px; }
-        .features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 28px;
-        }
-        .feature {
-            background: var(--card);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 14px;
-            transition: border-color 0.2s;
-        }
+        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+        .feature { background: var(--card); border: 1px solid var(--card-border); border-radius: 10px; padding: 14px; transition: border-color 0.2s; }
         .feature:hover { border-color: var(--accent); }
         .feature-icon { font-size: 20px; margin-bottom: 4px; }
         .feature-title { font-weight: 600; font-size: 13px; color: var(--text-bright); }
         .feature-desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
         .price-card {
             background: linear-gradient(135deg, #1a1f2e 0%, #111827 100%);
-            border: 1px solid var(--accent);
-            border-radius: 16px;
-            padding: 28px 24px;
-            text-align: center;
-            margin-bottom: 28px;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--accent); border-radius: 16px; padding: 28px 24px;
+            text-align: center; margin-bottom: 28px; position: relative; overflow: hidden;
         }
-        .price-card::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(245,158,11,0.04) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .price-amount {
-            font-family: 'Space Mono', monospace;
-            font-size: 44px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 2px;
-        }
+        .price-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(245,158,11,0.04) 0%, transparent 50%); pointer-events: none; }
+        .price-amount { font-family: 'Space Mono', monospace; font-size: 44px; font-weight: 700; color: var(--accent); margin-bottom: 2px; }
         .price-note { color: var(--text-dim); font-size: 14px; margin-bottom: 22px; }
-        .tip-box {
-            background: rgba(245, 158, 11, 0.08);
-            border: 1px solid rgba(245, 158, 11, 0.25);
-            border-radius: 10px;
-            padding: 14px 16px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            line-height: 1.7;
-            text-align: left;
-        }
+        .tip-box { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; font-size: 13px; line-height: 1.7; text-align: left; }
         .tip-title { font-weight: 700; color: var(--accent); margin-bottom: 4px; font-size: 13px; }
         .tip-box ul { padding-left: 16px; }
         .tip-box li { margin-bottom: 3px; }
-        .recommended {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 1px 6px;
-            border-radius: 3px;
-            margin-left: 4px;
-            vertical-align: middle;
-        }
-        .payment-label {
-            font-size: 11px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
+        .recommended { display: inline-block; background: var(--success); color: white; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 3px; margin-left: 4px; vertical-align: middle; }
+        .payment-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
         .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 15px 24px;
-            border-radius: 12px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+            padding: 15px 24px; border-radius: 12px; font-family: 'DM Sans', sans-serif;
+            font-size: 16px; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s;
         }
         .btn-lemon { background: var(--lemon); color: #1a1a1a; }
         .btn-lemon:hover { background: #ffcf4d; transform: translateY(-1px); }
         .btn-paypal { background: var(--paypal-blue); color: white; }
         .btn-paypal:hover { background: #005ea6; transform: translateY(-1px); }
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin: 14px 0;
-            color: var(--text-dim);
-            font-size: 12px;
-        }
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--card-border);
-        }
+        .divider { display: flex; align-items: center; gap: 14px; margin: 14px 0; color: var(--text-dim); font-size: 12px; }
+        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--card-border); }
         .steps { margin-bottom: 32px; }
-        .steps-title {
-            font-weight: 700;
-            font-size: 17px;
-            color: var(--text-bright);
-            margin-bottom: 14px;
-            text-align: center;
-        }
-        .step {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 12px;
-            align-items: flex-start;
-        }
-        .step-num {
-            width: 26px; height: 26px; min-width: 26px;
-            background: var(--accent);
-            color: var(--bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 12px;
-        }
+        .steps-title { font-weight: 700; font-size: 17px; color: var(--text-bright); margin-bottom: 14px; text-align: center; }
+        .step { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+        .step-num { width: 26px; height: 26px; min-width: 26px; background: var(--accent); color: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; }
         .step-text { font-size: 14px; line-height: 1.6; padding-top: 2px; }
         .step-text strong { color: var(--text-bright); }
-        .step-text code {
-            background: var(--card);
-            border: 1px solid var(--card-border);
-            padding: 1px 6px;
-            border-radius: 4px;
-            font-family: 'Space Mono', monospace;
-            font-size: 12px;
-            color: var(--accent);
-        }
-        .footer {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--card-border);
-            font-size: 13px;
-            color: var(--text-dim);
-        }
+        .step-text code { background: var(--card); border: 1px solid var(--card-border); padding: 1px 6px; border-radius: 4px; font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent); }
+        .footer { text-align: center; padding-top: 20px; border-top: 1px solid var(--card-border); font-size: 13px; color: var(--text-dim); }
         .footer a { color: var(--accent); text-decoration: none; }
         .footer a:hover { text-decoration: underline; }
-        @media (max-width: 480px) {
-            .features { grid-template-columns: 1fr; }
-            .price-amount { font-size: 36px; }
-            .header h1 { font-size: 22px; }
-        }
+        @media (max-width: 480px) { .features { grid-template-columns: 1fr; } .price-amount { font-size: 36px; } .header h1 { font-size: 22px; } }
+
         .lang-en, .lang-ko, .lang-en-inline, .lang-ko-inline, .lang-en-flex, .lang-ko-flex, .lang-en-grid, .lang-ko-grid { display: none; }
         body.en .lang-en { display: block; }
         body.ko .lang-ko { display: block; }
@@ -276,40 +111,40 @@
 <body class="en">
 <div class="container">
     <div class="lang-toggle">
-        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
-        <button class="lang-btn" id="btn-ko" onclick="setLang('ko')">한국어</button>
+        <button class="lang-btn active" id="btn-en">English</button>
+        <button class="lang-btn" id="btn-ko">한국어</button>
     </div>
 
     <div class="header">
-        <span class="moon-icon">🌙</span>
+        <span class="moon-icon">&#127769;</span>
         <h1>AstroWatchFace <span class="version">v4.0</span></h1>
         <p class="subtitle lang-en">Premium astronomical watch face for Garmin</p>
         <p class="subtitle lang-ko">가민 워치용 프리미엄 천체 워치페이스</p>
     </div>
 
     <div class="features lang-en-grid">
-        <div class="feature"><div class="feature-icon">🌕</div><div class="feature-title">Moon Phase</div><div class="feature-desc">Real-time lunar display + Polaris</div></div>
-        <div class="feature"><div class="feature-icon">🎨</div><div class="feature-title">5 Themes</div><div class="feature-desc">White, Ocean, Gold, Forest, Chestnut</div></div>
-        <div class="feature"><div class="feature-icon">⚙️</div><div class="feature-title">8 Sub-Dial Modes</div><div class="feature-desc">Activity, Weather, Health+ & more</div></div>
-        <div class="feature"><div class="feature-icon">💎</div><div class="feature-title">Full Customization</div><div class="feature-desc">Hand colors, sensors, layout</div></div>
+        <div class="feature"><div class="feature-icon">&#127765;</div><div class="feature-title">Moon Phase</div><div class="feature-desc">Real-time lunar display + Polaris</div></div>
+        <div class="feature"><div class="feature-icon">&#127912;</div><div class="feature-title">5 Themes</div><div class="feature-desc">White, Ocean, Gold, Forest, Chestnut</div></div>
+        <div class="feature"><div class="feature-icon">&#9881;</div><div class="feature-title">8 Sub-Dial Modes</div><div class="feature-desc">Activity, Weather, Health+ and more</div></div>
+        <div class="feature"><div class="feature-icon">&#128142;</div><div class="feature-title">Full Customization</div><div class="feature-desc">Hand colors, sensors, layout</div></div>
     </div>
     <div class="features lang-ko-grid">
-        <div class="feature"><div class="feature-icon">🌕</div><div class="feature-title">문페이즈</div><div class="feature-desc">실시간 달/해/별 + 북극성</div></div>
-        <div class="feature"><div class="feature-icon">🎨</div><div class="feature-title">5종 테마</div><div class="feature-desc">White, Ocean, Gold, Forest, Chestnut</div></div>
-        <div class="feature"><div class="feature-icon">⚙️</div><div class="feature-title">8가지 서브다이얼</div><div class="feature-desc">활동, 날씨, 건강+, 바람 등</div></div>
-        <div class="feature"><div class="feature-icon">💎</div><div class="feature-title">풀 커스터마이징</div><div class="feature-desc">침 색상, 센서, 레이아웃</div></div>
+        <div class="feature"><div class="feature-icon">&#127765;</div><div class="feature-title">문페이즈</div><div class="feature-desc">실시간 달/해/별 + 북극성</div></div>
+        <div class="feature"><div class="feature-icon">&#127912;</div><div class="feature-title">5종 테마</div><div class="feature-desc">White, Ocean, Gold, Forest, Chestnut</div></div>
+        <div class="feature"><div class="feature-icon">&#9881;</div><div class="feature-title">8가지 서브다이얼</div><div class="feature-desc">활동, 날씨, 건강+, 바람 등</div></div>
+        <div class="feature"><div class="feature-icon">&#128142;</div><div class="feature-title">풀 커스터마이징</div><div class="feature-desc">침 색상, 센서, 레이아웃</div></div>
     </div>
 
     <div class="price-card">
         <div class="price-amount">$2.99</div>
-        <div class="price-note lang-en">One-time purchase · Lifetime access</div>
-        <div class="price-note lang-ko">1회 결제 · 평생 이용</div>
+        <div class="price-note lang-en">One-time purchase &#183; Lifetime access</div>
+        <div class="price-note lang-ko">1회 결제 &#183; 평생 이용</div>
 
         <div class="tip-box lang-ko">
-            <div class="tip-title">🇰🇷 한국 사용자 결제 안내</div>
+            <div class="tip-title">&#127472;&#127479; 한국 사용자 결제 안내</div>
             <ul>
-                <li><strong>신용카드/체크카드</strong> → Lemon Squeezy 이용 <span class="recommended">추천</span></li>
-                <li><strong>PayPal 계정</strong> → PayPal 버튼으로 로그인 결제</li>
+                <li><strong>신용카드/체크카드</strong> &#8594; Lemon Squeezy 이용 <span class="recommended">추천</span></li>
+                <li><strong>PayPal 계정</strong> &#8594; PayPal 버튼으로 로그인 결제</li>
                 <li>PayPal 카드 직접 입력은 한국 카드가 제한될 수 있습니다</li>
             </ul>
         </div>
@@ -317,11 +152,10 @@
         <div>
             <div class="payment-label lang-en">Credit Card / Debit Card</div>
             <div class="payment-label lang-ko">신용카드 / 체크카드</div>
-            <!-- TODO: Replace with actual Lemon Squeezy checkout URL -->
-            <a href="https://ioet.lemonsqueezy.com/checkout/buy/f552431e-3c1a-465f-959b-f16d33c22cf1" class="btn btn-lemon" id="lemon-btn">
-                <span>🍋</span>
-                <span class="lang-en-inline">Pay with Card — $2.99</span>
-                <span class="lang-ko-inline">카드 결제 — $2.99</span>
+            <a href="https://ioet.lemonsqueezy.com/checkout/buy/f552431e-3c1a-465f-959b-f16d33c22cf1" class="btn btn-lemon">
+                <span>&#127819;</span>
+                <span class="lang-en-inline">Pay with Card &#8212; $2.99</span>
+                <span class="lang-ko-inline">카드 결제 &#8212; $2.99</span>
             </a>
         </div>
 
@@ -334,9 +168,9 @@
             <div class="payment-label lang-en">PayPal Account</div>
             <div class="payment-label lang-ko">PayPal 계정</div>
             <a href="https://www.paypal.com/ncp/payment/FJ4YSUECLP23J" class="btn btn-paypal">
-                <span>🅿️</span>
-                <span class="lang-en-inline">Pay with PayPal — $2.99</span>
-                <span class="lang-ko-inline">PayPal로 결제 — $2.99</span>
+                <span>&#9419;</span>
+                <span class="lang-en-inline">Pay with PayPal &#8212; $2.99</span>
+                <span class="lang-ko-inline">PayPal로 결제 &#8212; $2.99</span>
             </a>
         </div>
     </div>
@@ -345,27 +179,36 @@
         <div class="steps-title lang-en">How to Activate</div>
         <div class="steps-title lang-ko">활성화 방법</div>
 
-        <div class="step lang-en-flex"><div class="step-num">1</div><div class="step-text"><strong>Complete payment</strong> — Choose your preferred method above.</div></div>
-        <div class="step lang-en-flex"><div class="step-num">2</div><div class="step-text"><strong>Receive license key</strong> — Your key (<code>AWF-XXXXX-YYYYY</code>) arrives via email within 24 hours.</div></div>
-        <div class="step lang-en-flex"><div class="step-num">3</div><div class="step-text"><strong>Enter key</strong> — Garmin Connect → AstroWatchFace → Settings → <code>★ License Key (Premium)</code></div></div>
-        <div class="step lang-en-flex"><div class="step-num">4</div><div class="step-text"><strong>Sync & enjoy</strong> — All premium features unlocked!</div></div>
+        <div class="step lang-en-flex"><div class="step-num">1</div><div class="step-text"><strong>Complete payment</strong> &#8212; Choose your preferred method above.</div></div>
+        <div class="step lang-en-flex"><div class="step-num">2</div><div class="step-text"><strong>Receive license key</strong> &#8212; Your key (<code>AWF-XXXXX-YYYYY</code>) arrives via email within 24 hours.</div></div>
+        <div class="step lang-en-flex"><div class="step-num">3</div><div class="step-text"><strong>Enter key</strong> &#8212; Garmin Connect &#8594; AstroWatchFace &#8594; Settings &#8594; <code>&#9733; License Key (Premium)</code></div></div>
+        <div class="step lang-en-flex"><div class="step-num">4</div><div class="step-text"><strong>Sync and enjoy</strong> &#8212; All premium features unlocked!</div></div>
 
-        <div class="step lang-ko-flex"><div class="step-num">1</div><div class="step-text"><strong>결제 완료</strong> — 위 버튼에서 원하는 방법을 선택하세요.</div></div>
-        <div class="step lang-ko-flex"><div class="step-num">2</div><div class="step-text"><strong>키 수신</strong> — 24시간 내 이메일로 라이선스 키 발송 (<code>AWF-XXXXX-YYYYY</code>)</div></div>
-        <div class="step lang-ko-flex"><div class="step-num">3</div><div class="step-text"><strong>키 입력</strong> — Garmin Connect 앱 → AstroWatchFace → 설정 → <code>★ License Key (Premium)</code></div></div>
-        <div class="step lang-ko-flex"><div class="step-num">4</div><div class="step-text"><strong>동기화</strong> — 워치 동기화 후 프리미엄 기능 해제!</div></div>
+        <div class="step lang-ko-flex"><div class="step-num">1</div><div class="step-text"><strong>결제 완료</strong> &#8212; 위 버튼에서 원하는 방법을 선택하세요.</div></div>
+        <div class="step lang-ko-flex"><div class="step-num">2</div><div class="step-text"><strong>키 수신</strong> &#8212; 24시간 내 이메일로 라이선스 키 발송 (<code>AWF-XXXXX-YYYYY</code>)</div></div>
+        <div class="step lang-ko-flex"><div class="step-num">3</div><div class="step-text"><strong>키 입력</strong> &#8212; Garmin Connect 앱 &#8594; AstroWatchFace &#8594; 설정 &#8594; <code>&#9733; License Key (Premium)</code></div></div>
+        <div class="step lang-ko-flex"><div class="step-num">4</div><div class="step-text"><strong>동기화</strong> &#8212; 워치 동기화 후 프리미엄 기능 해제!</div></div>
     </div>
 
     <div class="footer">
-        <p>Developed by Taehoon · <a href="/cdn-cgi/l/email-protection#0175606469746f2f786841666c60686d2f626e6c"><span class="__cf_email__" data-cfemail="2e5a4f4b465b400057476e49434f4742004d4143">[email&#160;protected]</span></a></p>
+        <p>Developed by Taehoon &#183; taehun.yi@gmail.com</p>
         <p style="margin-top: 4px;"><a href="https://apps.garmin.com/en-US/apps/">Download on Connect IQ Store</a></p>
     </div>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 function setLang(lang) {
     document.body.className = lang;
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
     try { localStorage.setItem('awf-lang', lang); } catch(e) {}
 }
-(function() {
+document.getElementById('btn-en').addEventListener('click', function() { setLang('en'); });
+document.getElementById('btn-ko').addEventListener('click', function() { setLang('ko'); });
+try {
+    var saved = localStorage.getItem('awf-lang');
+    if (saved) { setLang(saved); }
+    else if (navigator.language && navigator.language.startsWith('ko')) { setLang('ko'); }
+} catch(e) {}
+</script>
+</body>
+</html>
