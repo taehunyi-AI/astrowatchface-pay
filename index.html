@@ -143,7 +143,7 @@
         <div class="tip-box lang-ko">
             <div class="tip-title">&#127472;&#127479; 한국 사용자 결제 안내</div>
             <ul>
-                <li><strong>신용카드/체크카드</strong> &#8594; Lemon Squeezy 이용 <span class="recommended">추천</span></li>
+                <li><strong>신용카드/체크카드</strong> &#8594; Gumroad 카드 결제 이용 <span class="recommended">추천</span></li>
                 <li><strong>PayPal 계정</strong> &#8594; PayPal 버튼으로 로그인 결제</li>
                 <li>PayPal 카드 직접 입력은 한국 카드가 제한될 수 있습니다</li>
             </ul>
@@ -152,8 +152,8 @@
         <div>
             <div class="payment-label lang-en">Credit Card / Debit Card</div>
             <div class="payment-label lang-ko">신용카드 / 체크카드</div>
-            <a href="https://ioet.lemonsqueezy.com/checkout/buy/f552431e-3c1a-465f-959b-f16d33c22cf1" class="btn btn-lemon">
-                <span>&#127819;</span>
+            <a href="https://taehun72.gumroad.com/l/ASTRO_PLACEHOLDER" class="btn btn-lemon">
+                <span>💳</span>
                 <span class="lang-en-inline">Pay with Card &#8212; $2.99</span>
                 <span class="lang-ko-inline">카드 결제 &#8212; $2.99</span>
             </a>
@@ -191,11 +191,11 @@
     </div>
 
     <div class="footer">
-        <p>Developed by Taehoon &#183; taehun.yi@gmail.com</p>
+        <p>Developed by Taehoon &#183; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3c7d2d6dbc6dd9dcadaf3d4ded2dadf9dd0dcde">[email&#160;protected]</a></p>
         <p style="margin-top: 4px;"><a href="https://apps.garmin.com/en-US/apps/">Download on Connect IQ Store</a></p>
     </div>
 </div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function setLang(lang) {
     document.body.className = lang;
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -203,12 +203,4 @@ function setLang(lang) {
     try { localStorage.setItem('awf-lang', lang); } catch(e) {}
 }
 document.getElementById('btn-en').addEventListener('click', function() { setLang('en'); });
-document.getElementById('btn-ko').addEventListener('click', function() { setLang('ko'); });
-try {
-    var saved = localStorage.getItem('awf-lang');
-    if (saved) { setLang(saved); }
-    else if (navigator.language && navigator.language.startsWith('ko')) { setLang('ko'); }
-} catch(e) {}
-</script>
-</body>
-</html>
+document.getElementById('btn-ko').addEventListener('click', function() { setLang('ko
